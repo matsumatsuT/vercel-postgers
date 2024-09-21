@@ -1,19 +1,14 @@
+import { ListPage } from "@/app/list/ListPage"
 import { prisma } from "@/lib/prisma"
 
+// サーバーで取得
 const List = async () => {
-  const data = await prisma.user.findMany()
+  const userData = await prisma.user.findMany()
 
   return (
     <div>
-      <div>ユーザー一覧を表示</div>
-      <ul>
-        {data.map((d) => (
-          <li key={d.id}>
-            <div>name:{d.name}</div>
-            <div>email:{d.email}</div>
-          </li>
-        ))}
-      </ul>
+      <h2>ユーザー一覧を表示</h2>
+      <ListPage userData={userData} />
     </div>
   )
 }
