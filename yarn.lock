@@ -59,10 +59,10 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-14.2.11.tgz#2150783dfec3b3e0e7c3ecfda2d4f30fbf913d44"
   integrity sha512-gQpS7mcgovWoaTG1FbS5/ojF7CGfql1Q0ZLsMrhcsi2Sr9HEqsUZ70MPJyaYBXbk6iEAP7UXMD9HC8KY1qNwvA==
 
-"@prisma/client@^5.19.1":
-  version "5.19.1"
-  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-5.19.1.tgz#d73f2b17b08628b6450c1c2dd20924d7a993aadf"
-  integrity sha512-x30GFguInsgt+4z5I4WbkZP2CGpotJMUXy+Gl/aaUjHn2o1DnLYNTA+q9XdYmAQZM8fIIkvUiA2NpgosM3fneg==
+"@prisma/client@^5.20.0":
+  version "5.20.0"
+  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-5.20.0.tgz#4fc9f2b2341c9c997c139df4445688dd6b39663b"
+  integrity sha512-CLv55ZuMuUawMsxoqxGtLT3bEZoa2W8L3Qnp6rDIFWy+ZBrUcOFKdoeGPSnbBqxc3SkdxJrF+D1veN/WNynZYA==
 
 "@prisma/debug@5.20.0":
   version "5.20.0"
