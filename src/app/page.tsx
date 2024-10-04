@@ -1,6 +1,7 @@
-import { redirect } from "next/navigation"
-import styles from "./page.module.css"
+import { redirect } from "next/navigation";
+import styles from "./page.module.css";
 
 export default function Home() {
-  redirect("/list")
+  // redirect("/list")
+  return <div>スタート</div>;
 }
