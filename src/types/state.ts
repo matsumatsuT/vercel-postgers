@@ -6,5 +6,6 @@ export type State = {
     name?: string[];
     email?: string[];
   };
-  message: string | null;
+  message?: string;
+  success: boolean | null;
 };

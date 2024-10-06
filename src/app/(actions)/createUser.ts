@@ -1,6 +1,8 @@
 "use server";
 
+import { prisma } from "@/lib/prisma";
 import { State } from "@/types/state";
+import { Prisma } from "@prisma/client";
 import { z } from "zod";
 
 const crateUser = z.object({
@@ -12,26 +14,41 @@ export async function createUser(
   state: State,
   formData: FormData
 ): Promise<State> {
-  const name = formData.get("name");
-  const email = formData.get("email");
-  console.log("発火");
-
+  const formDataName = formData.get("name");
+  const formDataEmail = formData.get("email");
   // crateUserで定義したバリデーションを行う
-  const validationField = crateUser.safeParse({ name, email });
+  const validationField = crateUser.safeParse({
+    name: formDataName,
+    email: formDataEmail,
+  });
 
   if (!validationField.success) {
     console.log("error", validationField.error);
     return {
       errors: validationField.error.flatten().fieldErrors,
-      message: "失敗",
+      success: false,
     };
   }
 
-  console.log("name", name);
-  console.log("email", email);
-  // 成功パターンをかく
+  const { name, email } = validationField.data;
 
-  return { message: "成功" };
+  try {
+    await prisma.user.create({
+      data: {
+        name,
+        email,
+      },
+    });
+    return { success: true };
+  } catch (error) {
+    console.log("error", error);
+    const errorCode =
+      error instanceof Prisma.PrismaClientKnownRequestError && error.code;
+    if (errorCode === "P2002") {
+      return { message: "同じメールアドレスは使用できません", success: false };
+    }
+    return { message: "予期せぬエラーが発生しました。", success: false };
+  }
 }
 
 /** createUser使用時の型情報 */
